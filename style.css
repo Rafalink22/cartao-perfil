@@ -1,140 +1,267 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/* ========================================
+   1. ESTILOS GERAIS E RESET
+   ======================================== */
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to right, #2c3e50, #4ca1af);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ========================================
+   2. LAYOUT PRINCIPAL E TIPOGRAFIA
+   ======================================== */
+
+.titulo {
+    text-align: center;
+    margin: 20px;
+}
+
+.sub-titulo {
+    text-align: center;
+    margin: 10px;
+}
+
+/* ========================================
+   3. NAVEGAÇÃO (HEADER)
+   ======================================== */
+
+header nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Usando min-height para melhor comportamento em mobile */
-    margin: 0;
+    list-style: none;
+    background-color: #202020;
+    padding: 15px 0;
 }
 
-.card {
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    padding: 30px;
-    width: 80vw; /* Largura em porcentagem da viewport para mobile */
-    max-width: 400px; /* Largura máxima para telas maiores */
-    transition: transform 0.3s ease;
+header nav li {
+    margin: 0 15px;
 }
 
-.card:hover {
-    transform: scale(1.05);
+header nav a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.card img {
-    width: 120px;
-    height: 120px;
+header nav a:hover {
+    background-color: #3f3f3f;
+}
+
+/* ========================================
+   4. SLIDER / CARROSSEL
+   ======================================== */
+
+/* 4.1. Estrutura e Botões do Slider */
+.slider-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 40px; /* Evita que os cards das pontas colem nas setas */
+}
+
+.slider-container {
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
     border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s;
 }
 
-.card h2 {
-    margin: 10px 0;
-    color: #2c3e50;
-    font-size: 22px;
-    font-weight: 500;
+.slider-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slider-button.prev {
+    left: 0;
+}
+
+.slider-button.next {
+    right: 0;
+}
+
+.slider-button.hidden {
+    display: none;
+}
+
+/* 4.2. Estilos dos Cards */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0; /* Impede que os cards encolham no container flex */
+    width: 345px;
+    height: 500px;
+    margin: 50px 15px;
+    background-color: rgb(230, 230, 230);
+    color: #202020;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    text-align: center;
+}
+
+.card-content {
+    flex-grow: 1; /* Esta é a linha que você precisa adicionar */
+    padding: 0 15px;
+    display: flex; /* Adicionado para centralizar o conteúdo interno */
+    flex-direction: column; /* Adicionado para centralizar o conteúdo interno */
+    justify-content: center; /* Adicionado para centralizar o conteúdo interno */
+}
+
+.card h1 {
+    font-size: 25px;
+    padding-top: 10px;
 }
 
 .card p {
-    color: #555;
-    font-size: 16px;
-    margin-bottom: 20px;
+    font-size: 17px;
+    padding: 15px 0;
 }
 
-.about-me {
-    margin: 20px 0;
+.card > a > img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.about-me h3 {
-    color: #4ca1af;
-    font-size: 18px;
-    font-weight: 600;
+/* 4.3. Correções para Links nos Cards */
+.card .card-image-link {
+    display: block;
+    font-size: 0; /* Evita um espaçamento fantasma abaixo da imagem */
 }
 
-.about-me p {
-    color: #666;
-    font-size: 14px;
-}
-
-.skills {
-    margin: 20px 0;
-}
-
-.skills h3 {
-    color: #4ca1af;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.skills ul {
-    list-style: none;
-    padding: 0;
-}
-
-.skills li {
-    color: #333;
-    font-size: 14px;
-    margin: 5px 0;
-}
-
-/* Ícones das redes sociais */
-.social-links {
-    margin-top: 20px;
-}
-
-.social-links a {
-    margin: 0 15px;
-    color: #2c3e50;
-    font-size: 28px;
+.card .card-button-link {
+    display: inline-block;
     text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.social-links a:hover {
-    color: #4ca1af;
-    transform: scale(1.3);
-    text-shadow: 0 0 8px rgba(76, 161, 175, 0.6);
+.card .card-button-link .btn {
+    color: #fff; /* Garante a cor original do botão, mesmo dentro de um link */
+    pointer-events: none; /* O clique é registrado no link <a>, não no botão */
 }
 
-/* Estilos específicos para telas menores (mobile) */
-@media (max-width: 768px) {
-    .card {
-        width: 90vw; /* Ocupa mais largura em telas menores */
-        padding: 40px; /* Aumenta o padding interno para mais espaço */
-        border-radius: 15px; /* Ajuste opcional do arredondamento */
-    }
+/* ========================================
+   5. COMPONENTES (Botões)
+   ======================================== */
 
-    .card img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 15px; /* Reduz um pouco a margem da imagem */
-    }
+.btn {
+    background-color: #202020;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 50px;
+    margin: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
 
-    .card h2 {
-        font-size: 20px;
-    }
+.btn:hover {
+    background-color: #3f3f3f;
+}
 
-    .card p {
-        font-size: 14px;
-    }
+/* ========================================
+   6. RODAPÉ
+   ======================================== */
 
-    .about-me h3,
-    .skills h3 {
-        font-size: 16px;
-    }
+.site-footer {
+    background-color: #202020; /* Mesma cor da sua navegação para consistência */
+    color: #a0a0a0; /* Cor de texto mais suave para não cansar a vista */
+    padding-top: 40px;
+    font-size: 15px;
+}
 
-    .about-me p,
-    .skills li {
-        font-size: 12px;
-    }
+.footer-content {
+    display: flex;
+    justify-content: space-around; /* Espaça as colunas igualmente */
+    flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-    .social-links a {
-        font-size: 24px;
-        margin: 0 10px;
-    }
+.footer-column {
+    width: 100%;
+    max-width: 450px; /* Impede que as colunas fiquem largas demais */
+    margin-bottom: 30px;
+}
+
+.footer-column h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Linha decorativa abaixo do título da coluna */
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #6c5ce7; /* Cor de destaque que usamos nos cards */
+}
+
+.footer-column p {
+    line-height: 1.7; /* Melhora a legibilidade do texto */
+}
+
+.footer-column .academic-context {
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.footer-nav {
+    list-style: none;
+}
+
+.footer-nav li {
+    margin-bottom: 10px;
+}
+
+.footer-nav a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #fff;
+    padding-left: 5px; /* Efeito sutil de deslocamento ao passar o mouse */
+}
+
+.footer-bottom-bar {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.2); /* Tom sobre tom para separar */
+    font-size: 14px;
 }

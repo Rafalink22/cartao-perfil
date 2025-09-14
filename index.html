@@ -1,42 +1,105 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Cartão de Perfil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <title>A Tecnologia Transforma Mundos.</title>
+    <link rel="icon" type="image/x-icon"  href="img/favicon_uninassau.ico" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="cover-photo"></div>
-
-    <div class="card">
-        <img src="gimpado.png" alt="Foto de perfil">
-        <h2>Bruno Rafael</h2>
-        <p>Estudante de Ciências da Computação</p>
-
-        <div class="about-me">
-            <h3>Sobre Mim</h3>
-            <p>Sou um estudante do segundo período, atualmente estou estudando python e seu frameworks como django, flask e FastAPI. Busco sempre aprender novas ferramentas e melhorar minhas habilidades em programação.</p>
-        </div>
-
-        <div class="skills">
-            <h3>Habilidades</h3>
-            <ul>
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>Python</li>
-                <li>Django</li>
-                <li>Flask</li>
-                <li>FastAPI</li>
+    <header>
+        <nav class="nav1">
+            <ul class="ul-nav">
+                <li class="navs li1"><a href="index.html">Ínicio</a></li>
+                <li class="navs li2"><a href="#">Conteúdos</a></li>
+                <li class="navs li3"><a href="programacao.html">Programação</a></li>
+                <li class="navs li4"><a href="criadores.html">Criadores</a></li>
             </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="titulo">Tecnologia que Transforma Mundos — Comece o Seu Aqui.</h1>
+        <p class="sub-titulo">Escolha abaixo a área de seu interesse. </p>
+        <div class="slider-wrapper">
+            <div class="slider-container">
+                <div class="cards slider-track">
+                    <div class="card card1">
+                        <a href="programacao.html" class="card-image-link"><img src="img/Programação.jpg" alt="imagem1"></a>
+                        <div class="card-content">
+                            <h1>Programação</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, dolor asperiores ea laborum nihil iure corporis qui?</p>
+                        </div>
+                        <a href="programacao.html" class="card-button-link"><button class="btn">Acessar</button></a>
+                    </div>
+                    <div class="card card2">
+                        <a href="#" class="card-image-link"><img src="img/RedesSociais.jpg" alt="imagem2"></a>
+                        <div class="card-content">
+                            <h1>Redes Sociais</h1>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti esse minima quidem sed, eaque voluptate placeat nemo tempore?</p>
+                        </div>
+                        <a href="#" class="card-button-link"><button class="btn">Acessar</button></a>
+                    </div>
+                    <div class="card card3">
+                        <a href="#" class="card-image-link"><img src="img/design.jpg" alt="imagem3"></a>
+                        <div class="card-content">
+                            <h1>Design</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam minus obcaecati veniam rerum atque iusto nesciunt quo harum.</p>
+                        </div>
+                        <a href="#" class="card-button-link"><button class="btn">Acessar</button></a>
+                    </div>
+                    <div class="card card4">
+                        <a href="#" class="card-image-link"><img src="img/E-Commerce.jpg" alt="imagem4"></a>
+                        <div class="card-content">
+                            <h1>E-Commerce</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione suscipit, itaque, vitae, in fugit consequuntur pariatur hic officiis.</p>
+                        </div>
+                        <a href="#" class="card-button-link"><button class="btn">Acessar</button></a>
+                    </div>
+                    <div class="card card5">
+                        <a href="#" class="card-image-link"><img src="img/Direito.jpg" alt="imagem5"></a>
+                        <div class="card-content">
+                            <h1>Direito</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione suscipit, itaque, vitae, in fugit consequuntur pariatur hic officiis.</p>
+                        </div>
+                        <a href="#" class="card-button-link"><button class="btn">Acessar</button></a>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-button prev">&#10094;</button>
+            <button class="slider-button next">&#10095;</button>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Sobre o Projeto</h4>
+                <p>
+                    Desenvolvido por: Bruno Rafael, Victor Hugo, Emily Graziely, Chayenne Laiza e Janiele Alessandra.
+                </p>
+                <p class="academic-context">
+                    Projeto acadêmico para a disciplina de Web Coding da Turma do 2° Périodo da UNINASSAU - Maceió, Englobado na oficina de Atividades Interdisciplinares Extensivas.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navegação</h4>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Ínicio</a></li>
+                    <li><a href="programacao.html">Programação</a></li>
+                    <li><a href="criadores.html">Criadores</a></li>
+                    <li><a href="#">Conteúdos</a></li>
+                </ul>
+            </div>
         </div>
 
-        <div class="social-links">
-            <a href="https://www.instagram.com/brafaelll/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/Rafalink22" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/brafaelll/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <div class="footer-bottom-bar">
+            <p>© 2025 Guia de Tutoriais para Área Tecnológica | Todos os direitos reservados.</p>
         </div>
-    </div>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
