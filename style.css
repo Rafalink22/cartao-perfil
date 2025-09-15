@@ -265,3 +265,55 @@ header nav a:hover {
     background-color: rgba(0, 0, 0, 0.2); /* Tom sobre tom para separar */
     font-size: 14px;
 }
+
+/* ========================================
+   7. RESPONSIVIDADE (MOBILE)
+   ======================================== */
+
+@media (max-width: 768px) {
+    
+    /* Ajusta o wrapper do slider para ocupar mais espaço na tela */
+    .slider-wrapper {
+        width: 100%;
+        padding: 0 10px; /* Reduz o espaçamento lateral */
+    }
+
+    /* O card agora ocupa quase toda a largura da tela */
+    .card {
+        width: 90%;
+        margin: 30px 5%; /* Centraliza o card com margem de 5% de cada lado */
+        height: auto; /* A altura se ajusta ao conteúdo */
+    }
+
+    /* Reduz o tamanho dos botões de navegação */
+    .slider-button {
+        width: 40px;
+        height: 40px;
+        top: 40%; /* Sobe um pouco os botões para não ficarem em cima do texto */
+    }
+
+    .slider-button.prev {
+        left: -5px;
+    }
+
+    .slider-button.next {
+        right: -5px;
+    }
+
+    /* Ajusta o rodapé para um layout de coluna única */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        max-width: 100%;
+    }
+
+    .footer-column h4::after {
+        /* Centraliza a linha decorativa abaixo do título no mobile */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
