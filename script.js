@@ -5,57 +5,66 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.querySelector('.slider-button.next');
     const prevButton = document.querySelector('.slider-button.prev');
 
-    // Largura de um card + suas margens laterais (400px de width + 15px de cada lado)
-    const cardWidth = cards[0].offsetWidth + 30;
-    
-    // Quantos cards queremos visíveis por vez
-    const cardsPerView = 3;
-    
+    let cardWidth = 0;
+    let cardsPerView = 0;
     let currentIndex = 0;
+
+    // Função principal que configura ou reconfigura o slider
+    const setupSlider = () => {
+        // Verifica a largura da janela para definir as variáveis
+        if (window.innerWidth <= 768) {
+            cardsPerView = 1;
+        } else {
+            cardsPerView = 3;
+        }
+
+        // Recalcula a largura do card (incluindo margens) dinamicamente
+        // offsetWidth pega a largura atual do elemento na tela
+        const cardMargin = parseInt(window.getComputedStyle(cards[0]).marginLeft) + parseInt(window.getComputedStyle(cards[0]).marginRight);
+        cardWidth = cards[0].offsetWidth + cardMargin;
+
+        // Reposiciona o slider para o índice atual (útil ao redimensionar)
+        moveToSlide(currentIndex);
+    };
 
     // Função para mover o trilho
     const moveToSlide = (targetIndex) => {
+        const lastPossibleIndex = cards.length - cardsPerView;
+
+        // Garante que o índice não seja menor que 0 ou maior que o último possível
+        if (targetIndex < 0) {
+            targetIndex = 0;
+        } else if (targetIndex > lastPossibleIndex) {
+            targetIndex = lastPossibleIndex;
+        }
+
         const offset = targetIndex * cardWidth;
         track.style.transform = `translateX(-${offset}px)`;
         currentIndex = targetIndex;
         updateButtons();
-    }
+    };
 
     // Função para mostrar/esconder botões
     const updateButtons = () => {
-        // Esconde o botão 'prev' se estivermos no início
-        if (currentIndex === 0) {
-            prevButton.classList.add('hidden');
-        } else {
-            prevButton.classList.remove('hidden');
-        }
+        prevButton.classList.toggle('hidden', currentIndex === 0);
 
-        // Esconde o botão 'next' se estivermos no final
-        // O último índice possível é o total de cards menos o número de cards visíveis
-        const lastSlideIndex = cards.length - cardsPerView;
-        if (currentIndex === lastSlideIndex) {
-            nextButton.classList.add('hidden');
-        } else {
-            nextButton.classList.remove('hidden');
-        }
-    }
+        const lastPossibleIndex = cards.length - cardsPerView;
+        nextButton.classList.toggle('hidden', currentIndex >= lastPossibleIndex);
+    };
 
-    // Event listener para o botão 'próximo'
+    // Event listeners para os botões de navegação
     nextButton.addEventListener('click', () => {
-        const lastSlideIndex = cards.length - cardsPerView;
-        if (currentIndex < lastSlideIndex) {
-            moveToSlide(currentIndex + 1);
-        }
+        moveToSlide(currentIndex + 1);
     });
 
-    // Event listener para o botão 'anterior'
     prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            moveToSlide(currentIndex - 1);
-        }
+        moveToSlide(currentIndex - 1);
     });
+    
+    // --- LÓGICA DE RESPONSIVIDADE ---
+    // Configura o slider quando a página carrega
+    setupSlider();
 
-    // Estado inicial dos botões ao carregar a página
-    updateButtons();
-
+    // Reconfigura o slider toda vez que a janela do navegador muda de tamanho
+    window.addEventListener('resize', setupSlider);
 });
